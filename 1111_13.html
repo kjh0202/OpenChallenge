@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>정규표현식 회원 가입</title>
+  <script language="javascript">
+    function validate() {
+      var re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
+      var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+      // 이메일이 적합한지 검사할 정규식
+      var rgEx = /[01](0|1|6|7|8|9)[-](\d{4}|\d{3})[-]\d{4}$/g; // 휴대폰번호 입력시 올바른 휴대폰 번호인지 체크
+
+      var msg = "";
+      var id = document.getElementById("id");
+      if (re.test(id.value))
+        msg += "ID ok\n"
+      else
+        msg += "ID not ok\n"
+
+      var pw = document.getElementById("pw");
+      if (re.test(pw.value))
+        msg += "PW ok\n"
+      else
+        msg += "PW not ok\n"
+
+
+      var checkpw = document.getElementById("checkpw");
+      if (re.test(checkpw.value))
+        msg += "Checkpw ok\n"
+      else
+        msg += "Checkpw not ok\n"
+
+
+      var email = document.getElementById("email");
+      if (re2.test(email.value))
+        msg += "Email ok\n"
+      else
+        msg += "Email not ok\n"
+
+      var mobile = document.getElementById("mobile");
+      if (rgEx.test(mobile.value))
+        msg += "Mobile ok\n"
+      else
+        msg += "Mobile not ok\n"
+     alert(msg);
+    }
+
+  </script>
+</head>
+
+<body>
+  <h3>정규표현식 회원 가입</h3>
+  <form name="join" onsubmit="return validate();" method="post" enctype="text/plain">
+    <table>
+      <tr>
+        <td>아이디 :</td>
+        <td><input type="text" id="id"> ※4-12자의 영문 대소문자와 숫자로만 입력</td>
+      </tr>
+      <tr>
+        <td>패스워드 :</td>
+        <td><input type="password" id="pw"> ※4-12자의 영문 대소문자와 숫자로만 입력</td>
+      </tr>
+      <tr>
+        <td>패스워드확인 :</td>
+        <td><input type="password" id="checkpw"></td>
+
+      </tr>
+      <tr>
+        <td>eMail :</td>
+        <td><input type="email" id="email"> ex)wjdxo513@naver.com</td>
+      </tr>
+      <tr>
+        <td>핸드폰 :</td>
+        <td><input type="mobile" id="mobile"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="button" id="check" value="유효성확인"></td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>
